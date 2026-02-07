@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Aggregate Calculator</title>
+
+<style>
+body{
+  font-family: Time new Roman;
+  background-image: url("23.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.box{
+  border: 1px solid black;
+  width: 330px;
+  padding: 15px;
+  margin: auto;
+  margin-top: 40px;
+  margin-left: 60px;
+  border-radius: 2vh;
+ 
+}
+
+input{
+  width: 90%;
+  padding: 3px;
+  border-radius: 1.5vh;
+  border-color: rgba(150, 150, 50, 1.0);
+  filter: drop-shadow(2px 2px 1px black);
+}
+
+  label{
+    color: rgba(100, 160, 150, 1.0);
+    font-family: sans-serif;
+    font-weight: bolder;
+  }
+
+button{
+  width: 50%;
+  padding: 8px;
+  cursor: pointer;
+  margin-left: 20%;
+   border-radius: 2vh;
+}
+button:hover{
+  width: 50%;
+  padding: 8px;
+  cursor: pointer;
+  margin-left: 20%;
+  background: rgba(50, 150, 140, 1.0);
+  border-radius: 2vh;
+}
+
+#result{
+    margin-left: 20%;
+    color: orange;
+    border: 1px solid black;
+    width: 200px;
+    height: 30px;
+    text-align: center;
+}
+
+</style>
+
+</head>
+
+<body>
+<div class="box">
+<h2>Aggregate Calculator</h2>
+
+<label>Matric Marks</label>
+<input type="number" id="omarksmatric">
+<br><br>
+
+<label>Total Matric Marks </label>
+<input type="number" id="totmarksmatric">
+<br><br>
+
+<label>Obtained F.Sc Marks </label>
+<input type="number" id="omarksfsc">
+<br><br>
+
+<label>Total F.Sc Marks </label>
+<input type="number" id="totmarksfsc">
+<br><br>
+
+<label>Entry Test Marks</label>
+<input type="number" id="entmarks">
+<br><br>
+
+<label>Total Entry Test Marks</label>
+<input type="number" id="entmarkstot">
+<br><br>
+
+<button onclick="calculate()">CALCULATE</button>
+<br><br>
+
+<h3 id="result"></h3>
+
+</div>
+
+<script>
+function calculate(){
+
+let matric = Number(document.getElementById("omarksmatric").value);
+let matrictotal = Number(document.getElementById("totmarksmatric").value);
+
+let fsc = Number(document.getElementById("omarksfsc").value);
+let fsctotal = Number(document.getElementById("totmarksfsc").value);
+
+let test = Number(document.getElementById("entmarks").value);
+let testtotal = Number(document.getElementById("entmarkstot").value);
+
+if(matrictotal==0 || fsctotal==0 || testtotal==0){
+  document.getElementById("result").innerHTML="Please enter valid totals";
+  return;
+}
+
+let matricperc = (matric / matrictotal) * 100;
+let fscperc = (fsc / fsctotal) * 100;
+let testperc = (test / testtotal) * 100;
+
+let aggregate = (matricperc * 0.10) +
+                (fscperc * 0.40) +
+                (testperc * 0.50);
+
+document.getElementById("result").innerHTML =
+"Aggregate: " + aggregate.toFixed(2) + "%";
+}
+</script>
+
+</body>
+</html>
